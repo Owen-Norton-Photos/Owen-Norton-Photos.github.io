@@ -55,10 +55,6 @@ body {
     border-radius: 0;
 }
 
-.artist-statement-page .header-image-frame img {
-    transform: rotate(90deg);
-}
-
 .year-gallery-page .image-container {
     position: sticky;
     top: 0;
