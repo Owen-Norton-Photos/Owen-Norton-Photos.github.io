@@ -20,6 +20,17 @@ body {
     border-radius: 12px;
 }
 
+/* Title positioned at the top-right of the image */
+.title {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+    text-align: center;
+    margin: 0;
+}
+
+/* Text box centered over the image */
 .text-box {
     position: absolute;
     top: 50%;
