@@ -228,3 +228,36 @@ body {
     padding: 24px 0;
     text-align: center;
 }
+
+.year-gallery-page .year-page {
+    padding: 0;
+}
+
+.year-gallery-page .year-page h2 {
+    margin: 12px 0 18px;
+}
+
+.image-gallery {
+    column-width: 360px;
+    column-gap: 12px;
+    text-align: left;
+}
+
+.image-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 0 12px;
+    border-radius: 3px;
+    break-inside: avoid;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+    }
+
+    .image-gallery {
+        column-width: 240px;
+    }
+}
