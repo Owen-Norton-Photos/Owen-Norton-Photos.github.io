@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owen Norton - 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="image-container">
+        <img src="IMG_9050.JPG" alt="Background image">
+
+        <div class="title-wrap">
+            <div class="title-row">
+                <h1 class="title"><a class="title-link" href="index.html">Owen Norton</a></h1>
+                <div class="year-menu">
+                    <button class="menu-button" type="button" aria-label="Browse years">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+            <div class="text-box">
+                <p>Student Photographer.</p>
+                <ul class="year-dropdown">
+                    <li><a href="2025.html">2025</a></li>
+                    <li><a href="2026.html">2026</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main class="year-page">
+        <h2>2026</h2>
+    </main>
+
+    <script>
+        const titleWrap = document.querySelector(".title-wrap");
+        const title = document.querySelector(".title");
+        const yearMenu = document.querySelector(".year-menu");
+        const textBox = document.querySelector(".text-box");
+        let closeMenuTimeout;
+
+        function openYearMenu() {
+            clearTimeout(closeMenuTimeout);
+            titleWrap.classList.add("year-menu-open");
+        }
+
+        function keepYearMenuOpen() {
+            clearTimeout(closeMenuTimeout);
+        }
+
+        function scheduleYearMenuClose() {
+            clearTimeout(closeMenuTimeout);
+            closeMenuTimeout = setTimeout(() => {
+                if (
+                    !titleWrap.matches(":hover") &&
+                    !titleWrap.contains(document.activeElement)
+                ) {
+                    titleWrap.classList.remove("year-menu-open");
+                }
+            }, 250);
+        }
+
+        title.addEventListener("pointerenter", openYearMenu);
+        title.addEventListener("focusin", openYearMenu);
+        title.addEventListener("pointerleave", scheduleYearMenuClose);
+        yearMenu.addEventListener("pointerenter", openYearMenu);
+        yearMenu.addEventListener("focusin", openYearMenu);
+        yearMenu.addEventListener("pointerleave", scheduleYearMenuClose);
+        textBox.addEventListener("pointerenter", keepYearMenuOpen);
+        textBox.addEventListener("pointerleave", scheduleYearMenuClose);
+        titleWrap.addEventListener("focusout", (event) => {
+            if (!titleWrap.contains(event.relatedTarget)) {
+                titleWrap.classList.remove("year-menu-open");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -29,9 +29,175 @@ body {
     align-items: center;
 }
 
+.title-wrap::after {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 256px;
+    height: 12px;
+    content: "";
+    transform: translateX(-50%);
+}
+
 .title {
     margin: 0;
     text-align: center;
+}
+
+.title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.title-link:focus-visible,
+.year-dropdown a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.year-menu {
+    position: relative;
+}
+
+.menu-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.menu-button::before,
+.menu-button::after {
+    position: absolute;
+    content: "";
+    box-sizing: border-box;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-button::before {
+    top: 11px;
+    left: 7px;
+    width: 22px;
+    height: 14px;
+    border-right: 2px solid white;
+    border-left: 2px solid white;
+    border-radius: 0 0 3px 3px;
+    transform: scaleY(0);
+    transform-origin: top;
+}
+
+.menu-button::after {
+    top: 8px;
+    left: 11px;
+    width: 7px;
+    height: 4px;
+    border: 2px solid white;
+    border-bottom: 0;
+    border-radius: 2px 2px 0 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+}
+
+.menu-button span {
+    position: absolute;
+    left: 6px;
+    display: block;
+    flex: 0 0 2px;
+    width: 24px;
+    height: 2px;
+    box-sizing: border-box;
+    background-color: white;
+    transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1), left 0.6s cubic-bezier(0.4, 0, 0.2, 1), width 0.6s cubic-bezier(0.4, 0, 0.2, 1), height 0.6s cubic-bezier(0.4, 0, 0.2, 1), flex-basis 0.6s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.6s cubic-bezier(0.4, 0, 0.2, 1), border-width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-button span:first-child {
+    top: 10px;
+}
+
+.menu-button span:nth-child(2) {
+    top: 17px;
+}
+
+.menu-button span:nth-child(3) {
+    top: 24px;
+}
+
+.title-wrap.year-menu-open .menu-button::before,
+.title-wrap.year-menu-open .menu-button::after {
+    transform: scale(1);
+}
+
+.title-wrap.year-menu-open .menu-button span:first-child {
+    top: 11px;
+    left: 7px;
+    flex-basis: 2px;
+    width: 22px;
+    height: 2px;
+    border-radius: 3px 3px 0 0;
+}
+
+.title-wrap.year-menu-open .menu-button span:nth-child(3) {
+    top: 23px;
+    left: 7px;
+    flex-basis: 2px;
+    width: 22px;
+    height: 2px;
+    border-radius: 0 0 3px 3px;
+}
+
+.title-wrap.year-menu-open .menu-button span:nth-child(2) {
+    top: 14px;
+    left: 14px;
+    flex-basis: 8px;
+    width: 8px;
+    height: 8px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+}
+
+.year-dropdown {
+    margin: 0;
+    padding: 8px 0 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.year-dropdown li {
+    padding: 8px 14px;
+    text-align: right;
+}
+
+.year-dropdown a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.year-dropdown a:hover {
+    text-decoration: underline;
+}
+
+.title-wrap.year-menu-open .year-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .text-box {
@@ -51,8 +217,14 @@ body {
 }
 
 .title:hover + .text-box,
-.title-wrap:hover .text-box {
+.title-wrap:hover .text-box,
+.title-wrap:focus-within .text-box {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+}
+
+.year-page {
+    padding: 24px 0;
+    text-align: center;
 }
