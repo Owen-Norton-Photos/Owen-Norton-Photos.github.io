@@ -1,3 +1,3 @@
 # goldcoolness1-ops.github.io
 
-Set the image filenames in the `galleryImagesByYear` lists in `gallery.js`. Keep each year's filenames in its own list; paths are relative to the site root. The year pages display the matching images uncropped and proportionally scaled in responsive columns. Add the referenced image files to the site for them to load.
+Put each year's photos in its matching folder: `2025pic/` or `2026pic/`. The year pages automatically find supported image files through the public GitHub repository API and show them newest-first using their EXIF capture dates. No generator or build step is needed; add the photos to the repository and publish the changes. Photos without readable EXIF capture dates appear after dated photos, ordered by filename. The gallery requires the repository to remain public and uses GitHub's unauthenticated API rate limit.
