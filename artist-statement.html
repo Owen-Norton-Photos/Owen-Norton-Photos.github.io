@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owen Norton - Artist Statement</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="year-gallery-page">
+    <div class="image-container">
+        <img src="IMG_9050.JPG" alt="Background image">
+
+        <div class="title-wrap">
+            <div class="title-row">
+                <h1 class="title"><a class="title-link" href="index.html">Owen Norton</a></h1>
+                <div class="year-menu">
+                    <button class="menu-button" type="button" aria-label="Browse pages">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+            <div class="text-box">
+                <p>Student Photographer.</p>
+                <ul class="year-dropdown">
+                    <li><a href="2026.html">2026-2027 year</a></li>
+                    <li><a href="2025.html">2025-2026 year</a></li>
+                    <li><a href="artist-statement.html">Artist Statement</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main class="year-page">
+        <h2>Artist Statement</h2>
+        <section class="year-description" aria-label="Artist statement, part one">
+            <p>This is my response to the YoungArts Art show submission questions, and it shows my perspective on photography well.</p>
+        </section>
+        <section class="year-description artist-statement" aria-label="Artist statement, part two">
+            <p>Question 1: Describe your connection to photography as a means of expression, as well as your point of view as an artist.  
+
+The main connection I find towards photography is the archival nature of it. Our time in any one place is fleeting, and as scary as it is, we need to move on from where we are, no matter where that may be. That doesn’t stop me from trying to grasp at the roots of my time somewhere in a way which I can share with others. Photography is that medium for me. It superficially captures my point of view in any one place, and it's all I can do to share it with the people around me, who often happen to be the subject of the picture. The candid and documentary style of photography is the form which has most prominently presented itself to me. The composition of the pictures and the way I position myself in the room are intentional, even if maybe subconscious. After thousands of pictures the subjects stop hearing the sound of the shutter and forget that I am even there. They are living life in the moment and showing themselves in the way their brain falls back onto when there are other, bigger things on the mind. This is the way they truly are. The moments we live through are so quickly forgotten and I feel a deep desire within myself to make countless artifacts with the goal of preserving the life of the people around me, and the life I am living in a way which is incredibly difficult to capture otherwise.
+
+
+    Question 2: Explain the work in your portfolio: why you made these works, the techniques used and the series throughline or relationship to you as an artist. 
+
+People around us, especially teenagers, try to be mindful of what we present to others as our own "true" identity, and self-censor the improper. As I have come to learn, not a single one of us can achieve that, and in all moments, especially those of reflection, we cannot maintain conscious control of our faces, and we present our Mfeelings to the world, all bars held. These emotions deserve to be seen and explained and understood, and the choice to withhold them from one another comes from a solely irrational state of mind, which is a dreadfully common source of many of our decisions these days. The instagram-ification of our virtual lives, to conduct this self censorship, has become so ingrained in the mantra of day to day life that it's leeching into the real world. Our social interactions rely on the base postulate that what we say to our peers is on some level true.
+</p>
+        </section>
+    </main>
+
+    <script>
+        const titleWrap = document.querySelector(".title-wrap");
+        const title = document.querySelector(".title");
+        const yearMenu = document.querySelector(".year-menu");
+        const textBox = document.querySelector(".text-box");
+        let closeMenuTimeout;
+
+        function openYearMenu() {
+            clearTimeout(closeMenuTimeout);
+            titleWrap.classList.add("year-menu-open");
+        }
+
+        function keepYearMenuOpen() {
+            clearTimeout(closeMenuTimeout);
+        }
+
+        function scheduleYearMenuClose() {
+            clearTimeout(closeMenuTimeout);
+            closeMenuTimeout = setTimeout(() => {
+                if (
+                    !titleWrap.matches(":hover") &&
+                    !titleWrap.contains(document.activeElement)
+                ) {
+                    titleWrap.classList.remove("year-menu-open");
+                }
+            }, 250);
+        }
+
+        title.addEventListener("pointerenter", openYearMenu);
+        title.addEventListener("focusin", openYearMenu);
+        title.addEventListener("pointerleave", scheduleYearMenuClose);
+        yearMenu.addEventListener("pointerenter", openYearMenu);
+        yearMenu.addEventListener("focusin", openYearMenu);
+        yearMenu.addEventListener("pointerleave", scheduleYearMenuClose);
+        textBox.addEventListener("pointerenter", keepYearMenuOpen);
+        textBox.addEventListener("pointerleave", scheduleYearMenuClose);
+        titleWrap.addEventListener("focusout", (event) => {
+            if (!titleWrap.contains(event.relatedTarget)) {
+                titleWrap.classList.remove("year-menu-open");
+            }
+        });
+    </script>
+</body>
+</html>

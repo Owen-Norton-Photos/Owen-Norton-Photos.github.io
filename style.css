@@ -94,7 +94,6 @@ body {
     height: 14px;
     border-right: 2px solid white;
     border-left: 2px solid white;
-    border-radius: 0 0 3px 3px;
     transform: scaleY(0);
     transform-origin: top;
 }
@@ -106,7 +105,6 @@ body {
     height: 4px;
     border: 2px solid white;
     border-bottom: 0;
-    border-radius: 2px 2px 0 0;
     transform: scaleY(0);
     transform-origin: bottom;
 }
@@ -120,7 +118,7 @@ body {
     height: 2px;
     box-sizing: border-box;
     background-color: white;
-    transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1), left 0.6s cubic-bezier(0.4, 0, 0.2, 1), width 0.6s cubic-bezier(0.4, 0, 0.2, 1), height 0.6s cubic-bezier(0.4, 0, 0.2, 1), flex-basis 0.6s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.6s cubic-bezier(0.4, 0, 0.2, 1), border-width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1), left 0.6s cubic-bezier(0.4, 0, 0.2, 1), width 0.6s cubic-bezier(0.4, 0, 0.2, 1), height 0.6s cubic-bezier(0.4, 0, 0.2, 1), flex-basis 0.6s cubic-bezier(0.4, 0, 0.2, 1), border-width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-button span:first-child {
@@ -146,7 +144,6 @@ body {
     flex-basis: 2px;
     width: 22px;
     height: 2px;
-    border-radius: 3px 3px 0 0;
 }
 
 .title-wrap.year-menu-open .menu-button span:nth-child(3) {
@@ -155,7 +152,6 @@ body {
     flex-basis: 2px;
     width: 22px;
     height: 2px;
-    border-radius: 0 0 3px 3px;
 }
 
 .title-wrap.year-menu-open .menu-button span:nth-child(2) {
@@ -165,7 +161,6 @@ body {
     width: 8px;
     height: 8px;
     border: 2px solid white;
-    border-radius: 50%;
     background-color: transparent;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
 }
@@ -208,7 +203,6 @@ body {
     width: 220px;
     padding: 16px 18px;
     background-color: rgba(0, 0, 0, 0.65);
-    border-radius: 10px;
     text-align: center;
     opacity: 0;
     visibility: hidden;
@@ -235,6 +229,26 @@ body {
 
 .year-gallery-page .year-page h2 {
     margin: 12px 0 18px;
+}
+
+.year-description {
+    max-width: 720px;
+    margin: 0 auto 28px;
+    padding: 18px 22px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.06);
+    text-align: left;
+    line-height: 1.6;
+}
+
+.year-description p {
+    margin: 0;
+    text-indent: 2em;
+}
+
+.artist-statement p {
+    white-space: pre-wrap;
+    tab-size: 4;
 }
 
 .image-gallery {
