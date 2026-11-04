@@ -382,6 +382,12 @@ body {
         padding: 20px;
     }
 
+    .year-gallery-page .image-container {
+        position: static;
+        top: auto;
+        z-index: auto;
+    }
+
     .home-page {
         height: auto;
         min-height: 100svh;
