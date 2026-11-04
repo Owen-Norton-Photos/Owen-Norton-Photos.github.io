@@ -56,7 +56,7 @@ window.galleryImagesByYear = {
         { src: "2026pic/DSC_0387.jpg", date: "2026-08-17T17:04:45" },
         { src: "2026pic/DSC_0294.jpg", date: "2026-08-17T16:55:09" },
         { src: "2026pic/IMG_2492.jpg", date: "2026-07-29T11:27:27" },
-        { src: "2026pic/IMG_0896.jpg", date: "2024-01-09T02:36:14" },
-        { src: "2026pic/IMG_0426.jpg", date: "2024-01-09T02:21:34" },
+        { src: "2026pic/IMG_0896.jpg", date: "2026-10-22T02:36:14" },
+        { src: "2026pic/IMG_0426.jpg", date: "2026-10-22T02:21:34" },
     ],
 };
