@@ -17,7 +17,7 @@
             <div class="title-row">
                 <h1 class="title"><a class="title-link" href="index.html">Owen Norton</a></h1>
                 <div class="year-menu">
-                    <button class="menu-button" type="button" aria-label="Browse years">
+                    <button class="menu-button" type="button" aria-label="Browse years" aria-expanded="false">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -47,12 +47,18 @@
         const titleWrap = document.querySelector(".title-wrap");
         const title = document.querySelector(".title");
         const yearMenu = document.querySelector(".year-menu");
+        const menuButton = yearMenu.querySelector(".menu-button");
         const textBox = document.querySelector(".text-box");
+        const mobileMenu = window.matchMedia("(max-width: 600px)");
         let closeMenuTimeout;
 
         function openYearMenu() {
+            if (mobileMenu.matches) {
+                return;
+            }
             clearTimeout(closeMenuTimeout);
             titleWrap.classList.add("year-menu-open");
+            menuButton.setAttribute("aria-expanded", "true");
         }
 
         function keepYearMenuOpen() {
@@ -67,6 +73,7 @@
                     !titleWrap.contains(document.activeElement)
                 ) {
                     titleWrap.classList.remove("year-menu-open");
+                    menuButton.setAttribute("aria-expanded", "false");
                 }
             }, 250);
         }
@@ -79,9 +86,28 @@
         yearMenu.addEventListener("pointerleave", scheduleYearMenuClose);
         textBox.addEventListener("pointerenter", keepYearMenuOpen);
         textBox.addEventListener("pointerleave", scheduleYearMenuClose);
+        menuButton.addEventListener("click", () => {
+            if (mobileMenu.matches) {
+                titleWrap.classList.toggle("year-menu-open");
+                menuButton.setAttribute("aria-expanded", String(titleWrap.classList.contains("year-menu-open")));
+            }
+        });
+        document.addEventListener("click", (event) => {
+            if (mobileMenu.matches && !titleWrap.contains(event.target)) {
+                titleWrap.classList.remove("year-menu-open");
+                menuButton.setAttribute("aria-expanded", "false");
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (mobileMenu.matches && event.key === "Escape") {
+                titleWrap.classList.remove("year-menu-open");
+                menuButton.setAttribute("aria-expanded", "false");
+            }
+        });
         titleWrap.addEventListener("focusout", (event) => {
             if (!titleWrap.contains(event.relatedTarget)) {
                 titleWrap.classList.remove("year-menu-open");
+                menuButton.setAttribute("aria-expanded", "false");
             }
         });
     </script>

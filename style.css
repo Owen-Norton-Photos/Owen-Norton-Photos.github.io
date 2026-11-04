@@ -383,7 +383,61 @@ body {
     }
 
     .home-page {
-        padding: 40px 20px 0;
+        height: auto;
+        min-height: 100svh;
+        padding: 20px;
+    }
+
+    .image-container,
+    .home-page .image-container {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .image-container > .title-wrap {
+        position: relative;
+        top: auto;
+        right: auto;
+        order: -1;
+        align-self: flex-end;
+        align-items: flex-end;
+        margin-bottom: 10px;
+        z-index: 1;
+    }
+
+    .home-page .image-container > img {
+        order: 1;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+    }
+
+    .image-container > .header-image-frame {
+        order: 1;
+    }
+
+    .image-container .text-box {
+        z-index: 20;
+        top: calc(100% + 4px);
+        right: 0;
+        left: auto;
+        transform: none;
+    }
+
+    .title-wrap:not(.year-menu-open):hover .text-box,
+    .title-wrap:not(.year-menu-open):focus-within .text-box {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .title-wrap.year-menu-open .text-box {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .image-gallery {
