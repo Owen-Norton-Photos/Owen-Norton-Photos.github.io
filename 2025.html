@@ -21,11 +21,12 @@
                         <span></span>
                         <span></span>
                         <span></span>
+                        <span class="camera-flash-burst" aria-hidden="true"></span>
                     </button>
                 </div>
             </div>
             <div class="text-box">
-                <p>Student Photographer.</p>
+                <p>Student, Photographer.</p>
                 <ul class="year-dropdown">
                     <li><a href="2026.html">2026-2027 year</a></li>
                     <li><a href="2025.html">2025-2026 year</a></li>
@@ -38,8 +39,7 @@
     <main class="year-page">
         <h2>2025</h2>
         <section class="year-description" aria-label="About the 2025 collection">
-            <p>2025 is when I truly began to take pictures. They are less artistic, and looking back on them there are things I would change, but they captured the people around me just as well. Many of these were taken on my phone, which is quite evident in the final product.</p>
-        </section>
+            <p>2025 is when I truly began to take pictures. They are less artistic, and looking back on them there are things I would change, but they captured the people around me just as well. Many of these were taken on my phone, which is quite evident in the final product. I experimented a lot as the year went on, with different settings or techniques. While some of the pictures are better than others, I consider none of them bad, just "immature."        </section>
         <div class="image-gallery" data-gallery-year="2025" role="region" aria-label="2025 photo gallery"></div>
     </main>
 
@@ -51,6 +51,7 @@
         const textBox = document.querySelector(".text-box");
         const mobileMenu = window.matchMedia("(max-width: 600px)");
         let closeMenuTimeout;
+        let cameraFlashTimeout;
 
         function openYearMenu() {
             if (mobileMenu.matches) {
@@ -87,6 +88,11 @@
         textBox.addEventListener("pointerenter", keepYearMenuOpen);
         textBox.addEventListener("pointerleave", scheduleYearMenuClose);
         menuButton.addEventListener("click", () => {
+            clearTimeout(cameraFlashTimeout);
+            menuButton.classList.remove("camera-flash");
+            void menuButton.offsetWidth;
+            menuButton.classList.add("camera-flash");
+            cameraFlashTimeout = setTimeout(() => menuButton.classList.remove("camera-flash"), 180);
             if (mobileMenu.matches) {
                 titleWrap.classList.toggle("year-menu-open");
                 menuButton.setAttribute("aria-expanded", String(titleWrap.classList.contains("year-menu-open")));

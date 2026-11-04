@@ -22,11 +22,12 @@
                         <span></span>
                         <span></span>
                         <span></span>
+                        <span class="camera-flash-burst" aria-hidden="true"></span>
                     </button>
                 </div>
             </div>
             <div class="text-box">
-                <p>Student Photographer.</p>
+                <p>Student, Photographer.</p>
                 <ul class="year-dropdown">
                     <li><a href="2026.html">2026-2027 year</a></li>
                     <li><a href="2025.html">2025-2026 year</a></li>
@@ -45,6 +46,7 @@
         const textBox = document.querySelector(".text-box");
         const mobileMenu = window.matchMedia("(max-width: 600px)");
         let closeMenuTimeout;
+        let cameraFlashTimeout;
 
         function openYearMenu() {
             if (mobileMenu.matches) {
@@ -81,6 +83,11 @@
         textBox.addEventListener("pointerenter", keepYearMenuOpen);
         textBox.addEventListener("pointerleave", scheduleYearMenuClose);
         menuButton.addEventListener("click", () => {
+            clearTimeout(cameraFlashTimeout);
+            menuButton.classList.remove("camera-flash");
+            void menuButton.offsetWidth;
+            menuButton.classList.add("camera-flash");
+            cameraFlashTimeout = setTimeout(() => menuButton.classList.remove("camera-flash"), 180);
             if (mobileMenu.matches) {
                 titleWrap.classList.toggle("year-menu-open");
                 menuButton.setAttribute("aria-expanded", String(titleWrap.classList.contains("year-menu-open")));

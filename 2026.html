@@ -21,6 +21,7 @@
                         <span></span>
                         <span></span>
                         <span></span>
+                        <span class="camera-flash-burst" aria-hidden="true"></span>
                     </button>
                 </div>
             </div>
@@ -38,8 +39,8 @@
     <main class="year-page">
         <h2>2026</h2>
         <section class="year-description" aria-label="About the 2026 collection">
-            <p>In 2026 I began to treat photography as slightly more than a hobby, and began to use it as an artistic outlet. I submitted to several art shows, and began to put my work on display.</p>
-        </section>
+            <p>In 2026 I began to treat photography as slightly more than a hobby, and began to use it as an artistic outlet. I submitted to several art shows, and began to put my work on display around my community. I try now to capture specific things, and treat the rest of the image as an extension of the focus. The spontaneity of photography as opposed to other visual fine arts is one of its more impactful characteristics to me, and no images below were posed or planned.
+            </section>
         <div class="image-gallery" data-gallery-year="2026" role="region" aria-label="2026 photo gallery"></div>
     </main>
 
@@ -51,6 +52,7 @@
         const textBox = document.querySelector(".text-box");
         const mobileMenu = window.matchMedia("(max-width: 600px)");
         let closeMenuTimeout;
+        let cameraFlashTimeout;
 
         function openYearMenu() {
             if (mobileMenu.matches) {
@@ -87,6 +89,11 @@
         textBox.addEventListener("pointerenter", keepYearMenuOpen);
         textBox.addEventListener("pointerleave", scheduleYearMenuClose);
         menuButton.addEventListener("click", () => {
+            clearTimeout(cameraFlashTimeout);
+            menuButton.classList.remove("camera-flash");
+            void menuButton.offsetWidth;
+            menuButton.classList.add("camera-flash");
+            cameraFlashTimeout = setTimeout(() => menuButton.classList.remove("camera-flash"), 180);
             if (mobileMenu.matches) {
                 titleWrap.classList.toggle("year-menu-open");
                 menuButton.setAttribute("aria-expanded", String(titleWrap.classList.contains("year-menu-open")));
