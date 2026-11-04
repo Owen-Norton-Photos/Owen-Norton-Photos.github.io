@@ -65,6 +65,12 @@ body {
     z-index: 10;
 }
 
+.year-gallery-page .image-container.header-shrink-complete {
+    position: relative;
+    top: auto;
+    transform: translateY(var(--header-release-offset, 0px));
+}
+
 .title-wrap {
     position: absolute;
     top: 20px;
@@ -382,12 +388,6 @@ body {
         padding: 20px;
     }
 
-    .year-gallery-page .image-container {
-        position: static;
-        top: auto;
-        z-index: auto;
-    }
-
     .home-page {
         height: auto;
         min-height: 100svh;
@@ -418,7 +418,8 @@ body {
         order: 1;
         width: 100%;
         height: auto;
-        aspect-ratio: 3 / 2;
+        aspect-ratio: auto;
+        object-fit: contain;
     }
 
     .image-container > .header-image-frame {
