@@ -22,7 +22,7 @@ jobs:
       - name: Install ImageMagick
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends -y imagemagick libheif1
+          sudo apt-get install --no-install-recommends -y imagemagick libheif-plugin-libde265
 
       - name: Prepare site and generate image previews
         run: |
