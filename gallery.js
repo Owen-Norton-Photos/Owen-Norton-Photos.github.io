@@ -9,6 +9,15 @@ function getPreviewSrc(src) {
     return `gallery-thumbnails/${match[1]}/${match[2].replace(/\.[^.]+$/, ".webp")}`;
 }
 
+function getFullSrc(src) {
+    const match = src.match(/^(\d{4})pic\/(.+)$/);
+    if (!match || !/\.(heic|heif)$/i.test(src)) {
+        return src;
+    }
+
+    return `gallery-images/${match[1]}/${match[2].replace(/\.[^.]+$/, ".jpg")}`;
+}
+
 if (gallery) {
     const images = window.galleryImagesByYear?.[gallery.dataset.galleryYear];
 
@@ -41,17 +50,17 @@ if (gallery) {
 
         images
             .slice()
-            .sort((left, right) => right.date.localeCompare(left.date) ||
+            .sort((left, right) => (right.date ?? "").localeCompare(left.date ?? "") ||
                 left.src.localeCompare(right.src, undefined, { numeric: true }))
             .forEach(({ src }) => {
                 const image = document.createElement("img");
-                image.dataset.fullSrc = src;
+                image.dataset.fullSrc = getFullSrc(src);
                 image.src = getPreviewSrc(src);
                 image.alt = src.split("/").pop();
                 image.loading = "lazy";
                 image.decoding = "async";
                 image.addEventListener("error", () => {
-                    image.src = src;
+                    image.src = image.dataset.fullSrc;
                 }, { once: true });
                 image.addEventListener("load", updateImageSpans, { once: true });
                 gallery.append(image);

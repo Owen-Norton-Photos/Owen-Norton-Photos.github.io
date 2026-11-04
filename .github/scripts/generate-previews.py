@@ -6,7 +6,8 @@ import subprocess
 from pathlib import Path
 
 
-IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png"}
+IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".heic", ".heif"}
+HEIC_EXTENSIONS = {".heic", ".heif"}
 GALLERY_YEARS = ("2025", "2026")
 
 
@@ -48,6 +49,27 @@ def main():
                 ],
                 check=True,
             )
+
+            if image_path.suffix.lower() in HEIC_EXTENSIONS:
+                full_image_path = (
+                    args.site_root
+                    / "gallery-images"
+                    / year
+                    / image_path.relative_to(image_directory).with_suffix(".jpg")
+                )
+                full_image_path.parent.mkdir(parents=True, exist_ok=True)
+                subprocess.run(
+                    [
+                        imagemagick,
+                        str(image_path),
+                        "-auto-orient",
+                        "-strip",
+                        "-quality",
+                        "92",
+                        str(full_image_path),
+                    ],
+                    check=True,
+                )
 
 
 if __name__ == "__main__":
