@@ -1,5 +1,14 @@
 const gallery = document.querySelector(".image-gallery");
 
+function getPreviewSrc(src) {
+    const match = src.match(/^(\d{4})pic\/(.+)$/);
+    if (!match) {
+        return src;
+    }
+
+    return `gallery-thumbnails/${match[1]}/${match[2].replace(/\.[^.]+$/, ".webp")}`;
+}
+
 if (gallery) {
     const images = window.galleryImagesByYear?.[gallery.dataset.galleryYear];
 
@@ -36,10 +45,14 @@ if (gallery) {
                 left.src.localeCompare(right.src, undefined, { numeric: true }))
             .forEach(({ src }) => {
                 const image = document.createElement("img");
-                image.src = src;
+                image.dataset.fullSrc = src;
+                image.src = getPreviewSrc(src);
                 image.alt = src.split("/").pop();
                 image.loading = "lazy";
                 image.decoding = "async";
+                image.addEventListener("error", () => {
+                    image.src = src;
+                }, { once: true });
                 image.addEventListener("load", updateImageSpans, { once: true });
                 gallery.append(image);
             });

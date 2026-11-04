@@ -12,7 +12,7 @@ let previouslyFocusedImage = null;
 
 function openImageViewer(image) {
     previouslyFocusedImage = image;
-    viewerImage.src = image.currentSrc || image.src;
+    viewerImage.src = image.dataset.fullSrc || image.currentSrc || image.src;
     viewerImage.alt = image.alt;
     imageViewer.showModal();
 }
