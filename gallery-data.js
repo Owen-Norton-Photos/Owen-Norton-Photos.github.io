@@ -120,6 +120,11 @@ window.galleryImagesByYear = {
         { src: "2025pic/image.PNG", date: "2025-08-30T00:00:00" },
     ],
     "2026": [
+        { src: "2026pic/1-DSC_0115.jpg", date: "2026-11-09T17:56:32" },
+        { src: "2026pic/1-DSC_0058.jpg", date: "2026-11-09T13:25:31" },
+        { src: "2026pic/1-DSC_0869.jpg", date: "2026-11-07T20:22:09" },
+        { src: "2026pic/1-DSC_0451.jpg", date: "2026-11-06T17:14:38" },
+        { src: "2026pic/1-DSC_0439.jpg", date: "2026-11-06T17:12:03" },
         { src: "2026pic/1-DSC_0123.jpg", date: "2026-11-03T00:31:20" },
         { src: "2026pic/1-DSC_0111.jpg", date: "2026-11-03T00:26:46" },
         { src: "2026pic/1-DSC_0787.jpg", date: "2026-11-02T17:48:37" },
