@@ -120,7 +120,6 @@ window.galleryImagesByYear = {
         { src: "2025pic/image.PNG", date: "2025-08-30T00:00:00" },
     ],
     "2026": [
-        { src: "2026pic/1-DSC_0332.jpg", date: "2026-11-11T18:49:01" },
         { src: "2026pic/1-DSC_0181.jpg", date: "2026-11-11T12:26:01" },
         { src: "2026pic/1-DSC_0115.jpg", date: "2026-11-09T17:56:32" },
         { src: "2026pic/1-DSC_0058.jpg", date: "2026-11-09T13:25:31" },
